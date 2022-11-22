@@ -1,24 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { Shorthand } from "./Shorthand";
 
 function App() {
+  const [story, setStory] = React.useState<number>(1);
+
+  const data = [
+    {
+      src: "https://christies.shorthandstories.com/21486-dubai-private-sale-block-party-nfts/embed.js",
+      "data-shorthand":
+        "//christies.shorthandstories.com/21486-dubai-private-sale-block-party-nfts",
+    },
+    {
+      src: "https://christies.shorthandstories.com/20281-trespassing-nft-feature/embed.js",
+      "data-id": "DuEKBggv8N",
+    },
+  ];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header style={{ paddingBottom: 40 }}>
+        <h1>SHORTHAND TEST</h1>
+        <button onClick={() => setStory(story === 1 ? 0 : 1)}>
+          set story number {story === 0 ? 1 : 0}
+        </button>
       </header>
+      <Shorthand {...data[story]} />
     </div>
   );
 }
